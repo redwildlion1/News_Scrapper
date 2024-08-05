@@ -1,0 +1,20 @@
+Subject: [PATCH] Create docker-image.yml
+---
+Index: Dockerfile
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Dockerfile b/Dockerfile
+--- a/Dockerfile	(revision 342a692140500e1b1c7d1252938d2a7da59954f2)
++++ b/Dockerfile	(date 1722902096955)
+@@ -31,7 +31,8 @@
+     libnss3-dev \
+     libxshmfence1 \
+     libgbm1 \
+-    libgtk-3-0
++    libgtk-3-0 \
++    xvfb
+ 
+ 
+ # Install Google Chrome
