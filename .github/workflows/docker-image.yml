@@ -1,0 +1,29 @@
+name: Build and Run Docker
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Build Docker image
+      run: docker build -t news-scrapper .
+
+    - name: Run Docker container
+      run: docker run --name news-scrapper-container news-scrapper
+
+    - name: Copy Excel file from container
+      run: docker cp news-scrapper-container:/app/articles.xlsx ./articles.xlsx
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: output-excel
+        path: ./articles.xlsx
