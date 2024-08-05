@@ -31,7 +31,8 @@ RUN apt-get update && \
     libnss3-dev \
     libxshmfence1 \
     libgbm1 \
-    libgtk-3-0
+    libgtk-3-0 \
+    xvfb
 
 
 # Install Google Chrome
