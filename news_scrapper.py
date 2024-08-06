@@ -163,7 +163,7 @@ class NewsScrapper:
         self.options = Options()
         self.options.add_argument("--headless=new")
         try:
-            service = webdriver.ChromeService(path)
+            service = webdriver.ChromeService('/usr/local/bin/chromedriver')
             self.driver = webdriver.Chrome(service=service, options=self.options)
             self.driver.get(self.url)
             self.driver.maximize_window()
