@@ -36,12 +36,10 @@ RUN apt-get update && \
 
 
 # Install Google Chrome
-RUN CHROME_VERSION="127.0.6533.88" && \
-    wget -q https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}/linux64/chrome-linux64.zip -O /tmp/chrome-linux64.zip && \
-    unzip /tmp/chrome-linux64.zip -d /tmp && \
-    mkdir -p /opt/google/chrome/bin && \
-    mv /tmp/chrome-linux64/chrome /opt/google/chrome/bin/ && \
-    ln -sf /opt/google/chrome/bin/chrome /usr/bin/google-chrome
+# Download and install Google Chrome
+RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/google-chrome-stable_current_amd64.deb && \
+    apt-get install -y /tmp/google-chrome-stable_current_amd64.deb && \
+    rm /tmp/google-chrome-stable_current_amd64.deb
 
 # Install ChromeDriver
 RUN CHROME_DRIVER_VERSION=127.0.0 && \
