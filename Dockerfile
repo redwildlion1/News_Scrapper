@@ -58,6 +58,7 @@ RUN rm -rf /tmp/* && \
 
 # Verify installations
 RUN google-chrome --version && chromedriver --version
+RUN echo "chrome: $(which google-chrome)" && echo "chromedriver: $(which chromedriver)"
 
 # Set the working directory
 WORKDIR /app
