@@ -159,12 +159,13 @@ class NewsScrapper:
         self.category = category
         self.num_months = num_months
         self.url = "https://www.latimes.com/search?q=" + self.search_query + "&s=1"
-        path = chromedriver_binary.chromedriver_filename
+        path = chromedriver_binary
         self.options = Options()
         self.options.add_argument("--headless=new")
+        self.options.add_argument("--no-sandbox")
+        self.options.add_argument("--disable-dev-shm-usage")
         try:
-            service = webdriver.ChromeService('/usr/local/bin/chromedriver')
-            self.driver = webdriver.Chrome(service=service, options=self.options)
+            self.driver = webdriver.Chrome(options=self.options)
             self.driver.get(self.url)
             self.driver.maximize_window()
         except Exception as e:
